@@ -1,0 +1,142 @@
+.btn-file {
+    position: relative;
+    overflow: hidden;
+}
+.btn-file input[type=file] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: red;
+    cursor: inherit;
+    display: block;
+}
+.btn-file input[type=submit] {
+    position: absolute;
+    top: 0;
+    right: 0;
+    min-width: 100%;
+    min-height: 100%;
+    font-size: 100px;
+    text-align: right;
+    filter: alpha(opacity=0);
+    opacity: 0;
+    background: red;
+    cursor: inherit;
+    display: block;
+}
+input[readonly] {
+    background-color: white !important;
+    cursor: text !important;
+}
+
+body {
+    padding-top: 90px;
+    background-color: #eeeeee; }
+
+.visible-caption {
+    color: #333333; }
+
+.panel-default > .panel-heading {
+    background: -webkit-linear-gradient(#E7E7E7, #BBBBBB);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#E7E7E7, #BBBBBB);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#E7E7E7, #BBBBBB);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#E7E7E7, #BBBBBB);
+    /* Standard syntax */ }
+
+.panel-default > .panel-footer {
+    background: -webkit-linear-gradient(#999999, #616161);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#999999, #616161);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#999999, #616161);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#999999, #616161);
+    /* Standard syntax */ }
+
+.panel-body {
+    background: -webkit-linear-gradient(#BBBBBB, #999999);
+    /* For Safari 5.1 to 6.0 */
+    background: -o-linear-gradient(#BBBBBB, #999999);
+    /* For Opera 11.1 to 12.0 */
+    background: -moz-linear-gradient(#BBBBBB, #999999);
+    /* For Firefox 3.6 to 15 */
+    background: linear-gradient(#BBBBBB, #999999);
+    /* Standard syntax */ }
+
+.row {
+    padding-top: 2px; }
+
+.no-float {
+    float: none; }
+
+.embed-container {
+    position: relative;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    max-width: 100%; }
+
+.gm-style-iw {
+    top: 15px !important;
+    /*
+    following items make prettier infowindows but needs some accompanying jquery hackery
+    that I don't want to do
+    width: 350px !important;
+    left: 0px !important;
+    background-color: #fff;
+    box-shadow: 0 1px 6px rgba(178, 178, 178, 0.6);
+    border: 1px solid rgba(72, 181, 233, 0.6);
+    border-radius: 2px 2px 10px 10px;
+    */ }
+
+#multi_markers {
+    #margin-bottom: 10px; }
+
+.giw_title {
+    font-family: 'Open Sans Condensed', sans-serif;
+    font-size: 22px;
+    font-weight: 400;
+    #padding: 10px;
+    background-color: #48b5e9;
+    color: white;
+    #margin: 0;
+    #border-radius: 2px 2px 0 0; }
+
+.giw_content {
+    font-size: 13px;
+    line-height: 18px;
+    font-weight: 400;
+    margin-right: 1px;
+    padding: 15px 5px 20px 15px;
+    max-height: 140px;
+    overflow-y: auto;
+    overflow-x: hidden; }
+
+.giw_content img {
+    float: right;
+    margin: 0 5px 5px 10px; }
+
+.giw_sub_title {
+    font-size: 16px;
+    font-weight: 700;
+    padding: 5px 0; }
+
+.giw_bottom_gradient {
+    position: absolute;
+    width: 326px;
+    height: 25px;
+    bottom: 10px;
+    right: 18px;
+    background: linear-gradient(to bottom, rgba(255, 255, 255, 0) 0%, white 100%);
+    background: -webkit-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
+    background: -moz-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%);
+    background: -ms-linear-gradient(top, rgba(255, 255, 255, 0) 0%, white 100%); }

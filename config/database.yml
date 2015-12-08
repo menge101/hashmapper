@@ -1,0 +1,6 @@
+development:
+  adapter: postgresql
+  database: hashmapper
+  username: hashmapper
+  password: hashmapper
+  host: localhost

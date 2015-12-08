@@ -1,0 +1,19 @@
+# Ignore all logfiles and tempfiles.
+/log/*.log
+/tmp
+
+# Ignore files from merges
+*.orig
+
+#All these annoying idea files
+.idea/
+
+#ignore keys
+*.key
+
+#ignore swap files
+*.swp
+*.swo
+
+#ignore .env file
+.env

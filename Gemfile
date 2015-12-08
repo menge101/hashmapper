@@ -1,0 +1,11 @@
+source 'https://rubygems.org'
+ruby '2.2.3'
+
+gem 'sinatra'
+gem 'sinatra-flash'
+gem 'sass'
+gem 'activerecord'
+gem 'sinatra-activerecord'
+gem 'pg'
+gem 'gon-sinatra'
+gem 'nokogiri'
