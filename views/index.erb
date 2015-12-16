@@ -20,6 +20,11 @@
           <div class="panel-heading"></div>
           <div class="panel-body">
             <div id="flash_messages">
+              <% flash.each do |type, message| %>
+                  <div name="flash_messages" class="alert <%= bootstrap_class_for(type) %> fade in">
+                    <%= message %>
+                  </div>
+              <% end %>
             </div>
             <div class="col-md-12">
               <div id="map-canvas" style="height: 500px;"></div>
