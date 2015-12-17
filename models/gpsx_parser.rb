@@ -11,23 +11,27 @@ class GpsxParser
   def extract_gps_coords
     raise StandardError, 'GPX file has an unsupported version' unless version == '1.1'
     coords = @file.css('trkpt').map { |x| [x.attr('lat').to_f, x.attr('lon').to_f] }
-    smooth_and_normalize coords
+    round_and_uniquify coords
   end
 
-  def smooth_and_normalize coords
-    coords.each_with_index do |coord,idx|
-      if idx == 0
-        coord.map! { |val| val.round(@precision) }
-      else
-        current = coord.map { |val| val.round(@precision) }
-        if coords[idx-1] == current
-          coords[idx] = nil
+  def round_and_uniquify coords
+    if @precision
+      coords.each_with_index do |coord,idx|
+        if idx == 0
+          coord.map! { |val| val.round(@precision) }
         else
-          coords[idx] = current
+          current = coord.map { |val| val.round(@precision) }
+          if coords[idx-1] == current
+            coords[idx] = nil
+          else
+            coords[idx] = current
+          end
         end
       end
+      coords.compact
+    else
+      coords
     end
-    coords.compact
   end
 
   def version

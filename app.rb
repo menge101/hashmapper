@@ -1,6 +1,5 @@
 require 'sinatra'
 require 'sinatra/activerecord'
-require 'rack-flash'
 require 'gon-sinatra'
 require './config/environments'
 require './models/gps_data'

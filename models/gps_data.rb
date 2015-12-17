@@ -6,8 +6,8 @@ class GpsData < ActiveRecord::Base
 
   def initialize
     super
-    self.data = {}
-    self.count = 0
+    self.data ||= {}
+    self.count ||= 0
   end
 
   def process_uploaded_files(files)
