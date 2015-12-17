@@ -92,10 +92,20 @@
   });
 
   $(document).ready( function() {
+    $('input[type="submit"]').prop('disabled', true);
     $('.btn-file :file').on('fileselect', function(event, numFiles, label) {
 
       var input = $(this).parents('.input-group').find(':text'),
           log = numFiles > 1 ? numFiles + ' files selected' : label;
+
+      if( numFiles > 128 ) {
+        $('input[type="submit"]').prop('disabled', true);
+        log = 'Cannot process more than 128 files.'
+      } else if( numFiles < 1 ) {
+        $('input[type="submit"]').prop('disabled', true);
+      } else {
+        $('input[type="submit"]').prop('disabled', false);
+      }
 
       if( input.length ) {
         input.val(log);
