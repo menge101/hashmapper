@@ -40,6 +40,7 @@ GEM
     tilt (2.0.1)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
+    yaml (4.2.2)
 
 PLATFORMS
   ruby
@@ -52,6 +53,7 @@ DEPENDENCIES
   sass
   sinatra
   sinatra-activerecord
+  yaml
 
 BUNDLED WITH
    1.10.6

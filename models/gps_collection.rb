@@ -45,7 +45,7 @@ class GpsCollection
   end
 
   def trim_file_list(files)
-    files.keep_if { |file| GpsxParser::gpx?(file[:tempfile]) }
+    files.keep_if { |file| GpsxParser::valid?(file[:tempfile]) }
   end
 
   def size

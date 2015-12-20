@@ -2,7 +2,10 @@ class GpsData < ActiveRecord::Base
   validates :data, presence: true
   validates :count, presence: true
 
-  VALID_TYPES = %w(application/gpx+xml) # application/vnd.garmin.tcx+xml application/vnd.google-earth.kmz text/csv
+  PARSER_CONFIG = YAML.load_file('config/parsers.yml').freeze
+  VALID_TYPES = PARSER_CONFIG['parsers'].map { |parser| parser['mime'] }.freeze
+  PARSERS = PARSER_CONFIG['parsers'].map { |parser| parser['class']}.freeze
+  #VALID_TYPES = %w(application/gpx+xml) # application/vnd.garmin.tcx+xml application/vnd.google-earth.kmz text/csv
 
   def initialize
     super
@@ -20,9 +23,8 @@ class GpsData < ActiveRecord::Base
       coordinates.load_hash(self.data)
       self.data = coordinates.to_hash
       self.count += parsed_data.size
+      self.save!
     end
-
-    self.save!
     return_val
   end
 
@@ -35,19 +37,22 @@ class GpsData < ActiveRecord::Base
 
   def handle_uploads(files)
     files = [] if files.nil?
-    success = rejected = 0
+    success = 0
     coordinates = Array.new
     files.each do |file|
       actual_file = file[:tempfile]
-      if GpsxParser::gpx? actual_file
-        parser = GpsxParser.new(file[:tempfile])
-        coordinates += parser.extract_gps_coords
-        success += 1
-      else
-        rejected += 1
+
+      PARSERS.each do |parser|
+        dynamic_parser = Object.const_get(parser)
+        if dynamic_parser.valid? actual_file
+          parser = dynamic_parser.new(actual_file)
+          coordinates += parser.extract_gps_coords
+          success += 1
+          break
+        end
       end
     end
-    { collection: coordinates, success: success, failure: rejected }
+    { collection: coordinates, success: success, failure: (files.length - success) }
   end
 
   def self.acceptable_types

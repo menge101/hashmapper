@@ -1,0 +1,9 @@
+parsers:
+  -
+    class: 'GpsxParser'
+    mime: 'application/gpx+xml'
+    extension: 'gpx'
+  -
+    class: 'KmlParser'
+    mime: 'application/vnd.google-earth.kmz'
+    extension: 'kml'

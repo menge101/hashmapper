@@ -1,12 +1,9 @@
 require 'sinatra'
 require 'sinatra/activerecord'
 require 'gon-sinatra'
+require 'nokogiri'
 require './config/environments'
-require './models/gps_data'
-require './models/gpsx_parser'
-require './models/gps_collection'
-require './models/gps_coords'
-
+Dir['./models/*'].each { |file| require file }
 
 class Hashmapper < Sinatra::Base
   enable :sessions
@@ -63,7 +60,7 @@ class Hashmapper < Sinatra::Base
         if result[:success] > 0
           session[:flash][:alert] = 'Not all files were successfully loaded'
         else
-          session[:flash][:danger] = 'GPS data was not uploaded successfully.'
+          session[:flash][:error] = 'GPS data was not uploaded successfully.'
         end
       else
         session[:flash][:success] =  'GPS data successfully uploaded.'
